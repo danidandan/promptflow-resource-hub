@@ -18,5 +18,5 @@ nodes:
   inputs:
     conn: custom_connection
     ask: ${inputs.ask}
-    model: gpt-4-32k
-    aoai_deployment: gpt-4-32k
+    model: gpt-4o
+    aoai_deployment: gpt-4o

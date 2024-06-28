@@ -35,13 +35,34 @@ if __name__ == "__main__":
 
 
     from promptflow.client import PFClient
+    from dotenv import load_dotenv, find_dotenv 
 
     pf = PFClient()
-    data = "testset_clean.csv"  # path to the data file
 
+    #     data = "testset_clean.csv"  # path to the data file
+    with open(os.path.join(os.path.dirname(__file__), 'testset_clean.csv'), 'r') as fin:
+        data = fin.name
 
-    rag_flow = "rag/flow.flex.yaml"
-    eval_flow = "eval/flow.flex.yaml"
+    # rag_flow = "./rag/flow.flex.yaml"
+    # eval_flow = "./eval/flow.flex.yaml"
+
+    # show the flow.flex.yaml content
+    with open(os.path.join(os.path.dirname(__file__), 'rag/flow.flex.yaml'), 'r') as fin:
+        rag_flow = fin.name
+
+    with open(os.path.join(os.path.dirname(__file__), 'eval/flow.flex.yaml'), 'r') as fin:
+        eval_flow = fin.name
+
+    # Load the .env file  
+    load_dotenv(find_dotenv())
+
+    # Get an environment variable  
+    endpoint = os.getenv('AZURE_OPENAI_ENDPOINT') 
+    key = os.getenv('AZURE_OPENAI_API_KEY')
+    api_version = os.getenv('AZURE_OPENAI_API_VERSION')  
+    embedding_deployment = os.getenv('AZURE_OPENAI_EMBEDDING_DEPLOYMENT')
+    chat_deployment = os.getenv('AZURE_OPENAI_CHAT_DEPLOYMENT') 
+
     # create run with the flow function and data
     base_run = pf.run(
         flow=rag_flow,
@@ -53,14 +74,14 @@ if __name__ == "__main__":
         stream=True,
     )
     details = pf.get_details(base_run)
-    details.head(10)
-
-
+    details.head(10) 
 
     # run the flow with existing run
     model_config = AzureOpenAIModelConfiguration(
-        connection="yijun-aoai",
-        azure_deployment="gpt-4-32k",
+        azure_deployment= os.getenv('AZURE_OPENAI_CHAT_DEPLOYMENT'),
+        azure_endpoint= os.getenv('AZURE_OPENAI_ENDPOINT'),
+        api_version= os.getenv('AZURE_OPENAI_API_VERSION'),
+        api_key= os.getenv('AZURE_OPENAI_API_KEY')
     )
     eval_run = pf.run(
         flow=eval_flow,
@@ -87,8 +108,8 @@ if __name__ == "__main__":
     print(json.dumps(metrics, indent=4))
 
     # visualize both the base run and the eval run
-    # pf.visualize([base_run, eval_run])
-    pf.visualize([base_run])
+    pf.visualize([base_run, eval_run])
+    # pf.visualize([base_run])
 
 
 

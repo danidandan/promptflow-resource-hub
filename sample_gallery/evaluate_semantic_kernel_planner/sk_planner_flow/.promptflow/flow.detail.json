@@ -37,10 +37,10 @@
           "name": "my_python_tool",
           "type": "Tool",
           "inputs": {
-            "aoai_deployment": "gpt-4-32k",
+            "aoai_deployment": "gpt-4o",
             "ask": "What is the sum of 110 and 990?",
             "conn": "custom_connection",
-            "model": "gpt-4-32k"
+            "model": "gpt-4o"
           },
           "output": {
             "result": "1100",
@@ -99,10 +99,10 @@
       "run_id": "a3219eb6-1974-4e73-8df6-db61e87169ff_planner_0",
       "status": "Completed",
       "inputs": {
-        "aoai_deployment": "gpt-4-32k",
+        "aoai_deployment": "gpt-4o",
         "ask": "What is the sum of 110 and 990?",
         "conn": "custom_connection",
-        "model": "gpt-4-32k"
+        "model": "gpt-4o"
       },
       "output": {
         "result": "1100",
@@ -131,10 +131,10 @@
           "name": "my_python_tool",
           "type": "Tool",
           "inputs": {
-            "aoai_deployment": "gpt-4-32k",
+            "aoai_deployment": "gpt-4o",
             "ask": "What is the sum of 110 and 990?",
             "conn": "custom_connection",
-            "model": "gpt-4-32k"
+            "model": "gpt-4o"
           },
           "output": {
             "result": "1100",

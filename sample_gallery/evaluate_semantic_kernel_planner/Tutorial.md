@@ -106,7 +106,7 @@ A small dataset can be found here: [data.jsonl](./sk_planner_flow/data.jsonl). T
 
 With the flow for the semantic kernel planner now created, you can perform a single test on the flow to verify if it operates as expected.
 
-In the sample flow, we use the "gpt-4-32k" model by default. You can change the model by modifying the `model` parameter and `aoai_deployment` in the [flow.dag.yaml](./sk_planner_flow/flow.dag.yaml) file. 
+In the sample flow, we use the "gpt-4o" model by default. You can change the model by modifying the `model` parameter and `aoai_deployment` in the [flow.dag.yaml](./sk_planner_flow/flow.dag.yaml) file. 
 
 ```yaml
 nodes:
@@ -118,8 +118,8 @@ nodes:
   inputs:
     conn: custom_connection
     ask: ${inputs.ask}
-    model: gpt-4-32k
-    aoai_deployment: gpt-4-32k
+    model: gpt-4o
+    aoai_deployment: gpt-4o
 ```
 
 Run the following command to test the flow:

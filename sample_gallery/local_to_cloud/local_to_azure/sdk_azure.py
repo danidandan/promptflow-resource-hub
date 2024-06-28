@@ -71,8 +71,8 @@ if __name__ == "__main__":
             "directory": "chroma_db",
         },
         environment_variables={
-        "AZURE_OPENAI_API_KEY": "${yijun-aoai.api_key}",
-        "AZURE_OPENAI_ENDPOINT": "${yijun-aoai.api_base}",
+        "AZURE_OPENAI_API_KEY": "${my_aoai_conn.api_key}",
+        "AZURE_OPENAI_ENDPOINT": "${my_aoai_conn.api_base}",
         },
         stream=True,
     )
@@ -83,8 +83,8 @@ if __name__ == "__main__":
 
     # run the flow with existing run
     model_config = AzureOpenAIModelConfiguration(
-        connection="yijun-aoai",
-        azure_deployment="gpt-4-32k",
+        connection="my_aoai_conn",
+        azure_deployment="gpt-4o",
     )
     eval_run = pf.run(
         flow=eval_flow,

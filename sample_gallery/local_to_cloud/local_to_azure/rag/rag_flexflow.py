@@ -13,9 +13,10 @@ from langchain_openai import AzureOpenAIEmbeddings
 
 from langchain_core.messages import HumanMessage
 from promptflow.tracing import start_trace
-
-from dotenv import load_dotenv  
-import os  
+import os 
+from pathlib import Path
+from dotenv import load_dotenv, find_dotenv 
+ 
 import json
 
 # Add tracing
@@ -27,7 +28,7 @@ class Result(TypedDict):
     output: str
 
 # Load the .env file  
-load_dotenv()  
+load_dotenv(find_dotenv())
 
 # Get an environment variable  
 endpoint = os.getenv('AZURE_OPENAI_ENDPOINT') 
@@ -82,7 +83,8 @@ def rag_chain_init(directory: str = "./chroma_db"):
     # Retrieve and generate using the relevant snippets of the blog.
     retriever = retrieve_docs(vector_store=vector_store,search_type="similarity", k = 6)
 
-    with open("./prompt.json", "r") as f:
+    #with open(".\prompt.json", "r") as f:
+    with open(os.path.join(os.path.dirname(__file__), 'prompt.json'), 'r') as f:
         prompt_text = json.load(f)
 
     system_prompt = prompt_text["system"]

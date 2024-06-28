@@ -87,8 +87,8 @@ if __name__ == "__main__":
 
     start_trace()
     model_config = AzureOpenAIModelConfiguration(
-        connection="yijun-aoai",
-        azure_deployment="gpt-4-32k",
+        connection="my_aoai_conn",
+        azure_deployment="gpt-4o",
     )
     evaluator = QnAEvaluator(model_config)
 

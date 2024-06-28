@@ -1,0 +1,12 @@
+{
+    "function": "generate",
+    "$schema": "https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json",
+    "entry": "rag_flexflow:generate",
+    "environment": {
+        "python_requirements_txt": "requirements.txt"
+    },
+    "environment_variables": {
+        "AZURE_OPENAI_API_KEY": "47bdbb7a10584784844cce958d6ab1d0",
+        "AZURE_OPENAI_ENDPOINT": "https://rebeccaazureopenai.openai.azure.com/",
+        "AZURE_OPENAI_API_TYPE": "azure",
+        "AZURE_OPENAI_API_VERSION": 
